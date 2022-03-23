@@ -1,6 +1,7 @@
 ### Automação Sem Complicação 2.0 Turma - 3
 
-### Ferramentas utilizadas!
+### Ferramentas utilizadas:
+
 ### Java 11
 ### Selenium Webdriver 3+
 ### JUnit:4+
