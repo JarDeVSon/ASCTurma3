@@ -11,7 +11,7 @@ public class MediaTest {
         // Arrange
         Media media = new Media();
         // Act,
-        String resultado = media.calcularMedia(5.0, 5.0);
+        String resultado = media.calcularMedia(5.00, 5.00);
         // Assert
         assertEquals("Aprovado", resultado);
     }
