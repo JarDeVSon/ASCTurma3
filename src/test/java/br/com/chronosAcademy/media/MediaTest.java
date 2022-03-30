@@ -1,5 +1,6 @@
-package br.com.chronosAcademy.media;
+package br.com.chronosAcademy.media.media;
 
+import br.com.chronosAcademy.media.Media;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
