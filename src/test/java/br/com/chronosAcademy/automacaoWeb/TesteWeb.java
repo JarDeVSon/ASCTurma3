@@ -38,7 +38,7 @@ public class TesteWeb {
         Inspecionado o titulo Tempo é conhecimento
         via copyXpath e armazenando num objeto do tipo String
          */
-        String xpathTitleH4 = "/html/body/div/div/div/div/div/section[2]/div[3]/div/div/div/div/div[1]/div/h4";
+        String xpathTitleH4 = "//section[2]//h4";
         // Buscar o elemento web existente no xpath
         WebElement textTitle = driver.findElement(By.xpath(xpathTitleH4));
         //Armazenando num objeto do tipo String e capturar seu texto.
