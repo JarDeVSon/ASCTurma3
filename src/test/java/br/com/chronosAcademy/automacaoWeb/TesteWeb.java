@@ -1,75 +1,63 @@
 package br.com.chronosAcademy.automacaoWeb;
 
+import br.com.chronosAcademy.pages.CursoPage;
+import br.com.chronosAcademy.pages.PrincipalPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class TesteWeb {
     //Criar o objeto do tipo ChromeDriver com nome driver
     ChromeDriver driver;
+    PrincipalPage principalPage;
+    CursoPage cursoPage;
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeEach
+    public void setUp() {
         //Configurar a instancia do chromedriver
         WebDriverManager.chromedriver().setup();
         //Instanciar o objeto ChromeDriver
         driver = new ChromeDriver();
+        principalPage = new PrincipalPage(driver);
+        cursoPage = new CursoPage(driver);
         //Maximiza o navegador
         driver.manage().window().maximize();
         //Abrir o site da Chronos
         driver.get("https://www.chronosacademy.com.br");
     }
 
-    @After
-    public void tearDown() throws Exception {
-        //Fechar o site e o navegador.
-        driver.quit();
-    }
+
 
     @Test
+    @DisplayName("Teste Titulo da ChronosAcademy")
     public void testTituloPoqueTempoEConhecimento() {
-        /*
-        Inspecionado o titulo Tempo é conhecimento
-        via copyXpath e armazenando num objeto do tipo String
-         */
-        String xpathTitleH4 = "//section[2]//h4";
-        // Buscar o elemento web existente no xpath
-        WebElement textTitle = driver.findElement(By.xpath(xpathTitleH4));
-        //Armazenando num objeto do tipo String e capturar seu texto.
-        String title = textTitle.getText();
         // Validando o texto do titulo da ChronosAcademy
-        assertEquals("Porque Tempo É Conhecimento", title);
-        System.out.println(title);
+        assertEquals("Porque Tempo É Conhecimento", principalPage.getTitle());
+        System.out.println(principalPage.getTitle());
 
     }
+
 
     @Test
     public void testClickNoBotaoConhecaNossosCursos() {
-        /*
-        Inspecionado o texto do botão - Conheça Nossos Cursos
-        via copyXpath e armazenando num objeto do tipo String
-         */
-        String xpathLinkSpan = "Conheça Nossos Cursos";
-        // Identificando o elemento Web pelo LinkText - Texto do botão
-        WebElement span = driver.findElement(By.linkText(xpathLinkSpan));
-        //void - Como não retorna nada, Ação de clique
-        span.click();
-
-        // Identificando o elemento Web pelo Xpath - Texto da div
-        String xpathTitleDiv = "//*[@id=\"block-214\"]/div/div/div/div[1]/div/div";
-        // Buscar o elemento web existente no xpath
-        WebElement div = driver.findElement(By.xpath(xpathTitleDiv));
-        //Armazenando num objeto do tipo String e capturar seu texto.
-        String textDiv = div.getText();
+        principalPage.clickBotaoConhecaNossosCursos();
         // Validando o texto do botão "Conheça todos os nossos cursos" da chronos academy
-        assertEquals("Conheça todos os nossos cursos", textDiv);
-        System.out.println(textDiv);
+        assertEquals("Conheça todos os nossos cursos", cursoPage.getTextDiv());
+        System.out.println(cursoPage.getTextDiv());
 
+    }
+
+
+
+    @AfterEach
+    public void tearDown() throws Exception {
+        //Fechar o site e o navegador.
+        driver.quit();
     }
 }
