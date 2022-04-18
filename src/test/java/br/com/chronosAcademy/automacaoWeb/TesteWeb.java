@@ -3,10 +3,8 @@ package br.com.chronosAcademy.automacaoWeb;
 import br.com.chronosAcademy.pages.CursoPage;
 import br.com.chronosAcademy.pages.PrincipalPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -56,7 +54,7 @@ public class TesteWeb {
 
 
     @AfterEach
-    public void tearDown() throws Exception {
+    public void tearDown(){
         //Fechar o site e o navegador.
         driver.quit();
     }
