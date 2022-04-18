@@ -1,30 +1,25 @@
-package br.com.chronosAcademy.media.media;
+package br.com.chronosAcademy.media;
 
-import br.com.chronosAcademy.media.Media;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MediaTest {
 
-    @Test
-    public void testValidarAprovado() {
-        // Arrange
-        Media media = new Media();
-        // Act,
-        String resultado = media.calcularMedia(5.00, 5.00);
-        // Assert
-        assertEquals("Aprovado", resultado);
+class MediaTest {
+
+    Media media;
+
+    @BeforeEach
+    void setUp() {
+        media = new Media();
     }
-
     @Test
-    public void testValidarReprovado() {
-        // Arrange
-        Media media = new Media();
-        //Act,
-        String resultado = media.calcularMedia(4.9, 5.0);
-        // Assert
-        assertEquals("Reprovado", resultado);
+    void validaAprovado() {
+       assertEquals("Aprovado",media.calculaMedia(5.0,5.0));
     }
-
+    @Test
+    void validaReprovado() {
+        assertEquals("Reprovado", media.calculaMedia(5.0,4.9));
+    }
 }
