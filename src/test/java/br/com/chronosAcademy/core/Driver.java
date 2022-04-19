@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Driver {
-    private WebDriver driver = null;
+    private WebDriver driver;
 
     public Driver(String navegador) {
         switch (navegador.toLowerCase()) {
@@ -20,10 +20,7 @@ public class Driver {
                 break;
 
         }
-        if (this.driver != null) {
-            this.driver.manage().window().maximize();
-        }
-
+       driver.manage().window().maximize();
     }
 
     public WebDriver getDriver() {
